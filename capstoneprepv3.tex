@@ -23,25 +23,24 @@
 
 \date{\today}
 
-\begin{abstract} \noindent Brownian Motion was first observed by Robert Brown
+\begin{abstract} \noindent 
 
 The efficacy of Brownian Motion expirements has improved significantly since the advent of digital recording devices. In the past, this phenomenon was observed by viewing suspended particles through a microscope and camera lucida, and tracking the particles by marking paper at regular intervals. Utilizing high frame rate digital cameras and specialized tracking software improves the efficacy of this expirement significantly. So much so, that this method can now be used to study the visco-elastic properties of the solution the particles are suspended in. This project aims to create an expiremental process for studying Brownian Motion in an undergraduate laboratory setting, as well as potentially performing microrheology expirements.  
 
-Place your abstract here.  It should describe your project, what you propose to do, and any specific questions you hope to address.   Your abstract should stand alone, and make sense without the rest of the paper.   Thus you should not refer to your figures or tables.   Abstracts are frequently published without the rest of the paper.   Your Capstone II final paper will have the abstract and author info, for example, available on the COS webpage - but not the rest of the paper.
 \end{abstract}
 
 \maketitle
 
-\section*{Introduction}
+\section*{Background}
 Brownian Motion was first observed by Robert Brown when he saw chaotic motion of tiny pollen particles suspended in water, originally he thought this might be due to biological organisms. Albert Einstein later theorized that this motion resulted entirely from the atomic nature of matter and could be explained as collisions between the particle and the molecules in the solution. Einstein's hypothesis was tested by the French physicist, Jean Baptiste Perrin, who had developed a technique for creating precise spherical particles around $1 \times 10^{-6}$ meters (1$\mu$m) in size. To observe the chaotic motion, the particles were suspended in water and observed through a microscope and camera lucida, which allowed the image of the microscope slide to be superimposed on a drawing surface. The position of the particles were then marked at regular time intervals. This experimental process can be greatly improved by using a digital camera and specialized particle tracking software. 
-
-The motion of the particle can be modeled as the sum of the impulses during a given instance ($dt$) on the particle. Consider the interaction between one molecule of the solution and the particle being studied, during the collision it imparts a force $F_i(t)$ to the particle. Over a given time $dt$ the impulse is given by:
+\section*{Theory}
+The motion of the particle can be modeled as the sum of the impulses during a given instance ($dt$) on the particle. Consider the interaction between one molecule of the solution and the particle being studied. During the collision the particle is subject to a force $F_i(t)$. Over a given time $dt$ the impulse of this force is defined as:
 \beq
 J_i=\int F_i(t)dt
 \label{eq:1}
 \eeq
 Given the relative size difference between the particle and the individual molecules which comprise the solution, one can imagine many thousands of impulses in a short time $dt$. 
-The force on the particle is then given by the sum of all such impulses over a time $dt$.
+The total force on the particle during a given time $dt$ is the sum of all such impulses.
 \beq
 F(t)dt=\sum_{i}J
 \label{eq:2}
@@ -51,29 +50,32 @@ Where $F(t)$ is given by Paul Langevin's equation describing a viscous fluid(REF
 F(t)=-\alpha{}v(t)dt+F^{(r)}(t)dt
 \label{eq:Langevin Force}
 \eeq
-Where $\alpha$ is the viscous drag coefficient, studied by Stokes and found to be:
+Where $\alpha$ is the viscous drag coefficient, studied by Stokes and found to be
 \beq
 \alpha{}=3\pi{}\eta{}d
 \label{eq:drag coeff}
 \eeq
-for sphere of diameter $d$ in a fluid with viscosity given by $\eta$ (REF BM4). This term causes the particle's velocity to tend towards zero, while the $F^{(r)}(t)$ represents the random force applied by thousands of particulate collisions, and in turn causes it to accelerate once again, giving rise to the particle's chaotic motion. The randomly applied force vector $F^{(r)}(t)$ creates a distribution in the particle's velocity. Specifically, one that satisfies the equipartition theorem, which states that the kinetic energy of the molecules in a system is proportional to the temperature.  In one dimension this can be expressed as:
+for sphere of diameter $d$ in a fluid with viscosity given by $\eta$ (REF BM4). That term causes the particle's velocity to tend towards zero, while the $F^{(r)}(t)$ represents the random force applied by thousands of particulate collisions, causing it to accelerate once again and giving rise to the particle's chaotic motion. The randomly applied force vector $F^{(r)}(t)$ creates a distribution in the particle's velocity. Specifically, one that satisfies the equipartition theorem, which states that the kinetic energy of the molecules in a system is proportional to the temperature.  In one dimension this can be expressed as:
 \beq
 \frac{1}{2}m\langle{}v_{x}^{2}\rangle=\frac{1}{2}K_{B}T
 \label{eq:equipartition}
 \eeq
 where $m$ is the mass, $T$ is the temperature, $K_B$ is the Boltzmann constant, and $\langle{}v_{x}^{2}\rangle$ is the average velocity for a large population size.
-The governing statistics behind this motion come from an application of the central limit theorem, which states that if many numbers are randomly drawn from the same probability distribution, the sum of these numbers will be a Gaussian-distributed random number (ref).
+The underlying statistics governing the chaotic motion come from an application of the central limit theorem, which states that if many numbers are randomly drawn from the same probability distribution, the sum of these numbers will be a Gaussian-distributed random number (ref).
 
-Specifically the theorem predicts that $N$ random numbers drawn from any probability distribution, with a mean of $\mu_i$ and variance $\sigma_{i}^2$ then the sum of those numbers $\sum N$ will result in a Gaussian distribution with mean $\mu = N\mu_i$ and a variance of $\sigma^2=N\sigma_{i}^2$. 
+Specifically the theorem predicts that $N$ random numbers drawn from any probability distribution, with a mean of $\mu_i$ and variance $\sigma_{i}^2$, then the sum of those numbers $\sum N$ will result in a Gaussian distribution with mean $\mu = N\mu_i$ and a variance of $\sigma^2=N\sigma_{i}^2$. 
 
 In the study of Brownian Motion the mean displacement ($\Delta{}r$) of the particle is equal to zero, since the displacement in either direction is equally likely. However the mean squared displacement (MSD) is the variance of the resulting Gaussian. In one dimension:
 \beq
-\sigma^2=\langle{}\Delta{}r^2\rangle{}=\langle{}\Delta{}x^2\rangle{}
+\sigma^2=\langle{}\Delta{}r^2\rangle{}=\langle{}\Delta{}x^2\rangle{}=2Dt
 \label{eq:Displacement}
 \eeq
-
-
-Einstein was the first to theorize a correlation between the Diffusion Coefficient ($D$) and the variance of the distribution (CITE BM 11)
+where $D$ is the diffusion coefficient defined as:
+\beq
+D=\frac{K_BT}{\alpha}
+\label{eq:Diffusion Coeff}
+\eeq
+Einstein was the first to theorize a correlation between the Diffusion Coefficient ($D$) and the variance of the distribution, creating an important link between viscosity, temperature of the solution, and the random motion exhibited by a suspended particle. (CITE BM 11)
 
 
 
@@ -83,20 +85,20 @@ use bibtex.   It is good to have both historical and modern references. \cite{Ti
 Sometimes you need to cite things other than articles. \cite{UnitsTable}
 %
 \section*{Data Collection and Analysis}
-These predictions can be reproduced utilizing a digital camera with a fast frame rate and a microscope with sufficient zoom. In general the procedure will require the digital camera to be sufficiently mounted to the microscope lens in such a way that the particles can be recorded reliably. Next a microscope slide containing a sample of microsphere particles will be prepared in such a way to minimize wind currents. The data will be collected and then analyzed, likely using a version of specialed tracking software developed by Eric Weeks and others. (REFER). The resulting displacement data can be fit to a Gaussian and the variance calculated in order to extract the diffusion coefficient according to equations \ref{eq:Variance} and (7). Additionaly the two-dimensional MSD can be calculated at each time, relative to the camera frame rate, using the following equation:
+These predictions can be reproduced utilizing a digital camera with a fast frame rate and a microscope with a sufficient zoom. In general the procedure requires the digital camera to be sufficiently mounted to the microscope lens in such a way that the particles can be recorded reliably. Next a microscope slide containing a sample of microsphere particles is prepared so that wind currents and other outside interference is minimized. The data is collected automatically using a specialized particle tracking software. The resulting displacement data can be fit to a Gaussian and the variance calculated in order to extract the diffusion coefficient according to equations \ref{eq:Variance} and (7). Additionaly the two-dimensional MSD can be calculated at each time, relative to the camera frame rate, using the following equation:
 \beq
 \langle\Delta{}r^{2}(t)\rangle{}=N_{i}^{-1}\sum_{i=1}^{N_i}\left[\left(x\left(t_{i}+t\right)-x\left(t_i\right)\right)^2+\left(y\left(t_{i}+t\right)-y\left(t_i\right)\right)^2\right]
 \label{eq:two2dMSD}
 \eeq
-A collective ensemble of the mean squared displacements is averaged and the slope of the line used to calculate the diffusion coefficient.
+A collective ensemble of the mean squared displacements is averaged and the slope of the line used to calculate the diffusion coefficient. A number of interesting values can be calculated from the diffusion coefficient including; the Bolzmann constant, Avagrado's number, the radius of the bead, or the temperature of the solution (REFER Catopovic 486).
 
 \section*{Project Goals}	
 The main goal of this capstone project is to create and document an experimental procedure, so that the experiment can be performed by undergraduates in a physics laboratory class. As such, a complete documentation for this expiremental procedure will be created for reproducibility and use in the lab course. Portions of this project will be dedicated to error analysis and potential pitfalls that may be encountered, in order to create a reliable and repeatable experiment. Additionally, if the expirement proves reliable, a similar technique could be used to study the visco-elastic properties of unknown solutions, in a process known as microrheology. 
 
 \section*{Budget}
-This project includes a budget proposal of around ---, which covers some specialty items including a digital camera, microspheres, and a fluid to increase the viscosity of the solution. 
-
+This project includes a budget proposal of around ---, which covers some specialty items including a digital camera and the microspheres. The particle tracking software will likely utilize a library creating by Eric Weeks and others, specifically created for Brownian Motion expirements.
 Those key components and other items needed to conduct the expirement are listed below:
+
 
  \begin{tabular}{|l|r|}
 \hline
@@ -114,68 +116,26 @@ Those key components and other items needed to conduct the expirement are listed
   \hline
 \end{tabular}
 
+  
 
-
-
-
-Combining the statistical techniques described above, with high quality video equipment, will allow a thorough analysis of Brownian Motion. In order to achieve the desired results the following procedure will be designed and implemented for use in an undergraduate laboratory class. 
-
-
-
-
-You should have several sections in here; this is the body of your report.   Do not number the sections.
-Use of the asterisk in the section heading eliminates numbering.   You probably won't need subsections.
-%
-\section*{Notes on Figures}
-It is also possible/likely that you will have figures in this or other
-sections.  \textbf{Figures must be your own or you
-must have permission from the journal/author).}  Because provenance
-cannot be determined from Wikipedia or other popular websites, use of
-figures from these sites is prohibited.   
-
-It is crucially important that figures have large enough type font that you can read the axis labels and any insets.   Test this before preparing many figures.   It is surprisingly difficult to make the type big enough to still be readable once reduced to two-column format size.
-
-Every figure must have a figure number and a caption.
-
-I'm repeating things now to make this longer so as to test formatting.  You, on the other hand, are not allowed to repeat things just to make your paper longer!!
-
-It is also possible/likely that you will have figures in this or other
-sections.  \textbf{Figures must be your own or you
-must have permission from the journal/author).}  Because provenance
-cannot be determined from Wikipedia or other popular websites, use of
-figures from these sites is prohibited.   
-
-\section*{Gnuplot Figures}
-If you are using gnuplot to generate plots of data, you may find it useful to generate \textit{eps} output from gnuplot.   If you do so, you may need to use \LaTeX commands, which generate a \textit{DVI} file, rather than PDF\LaTeX commands that go straight to a \textit{PDF} file format.   Gnuplot makes very clean \textit{eps} files which are small in size and superb resolution.   However, these do not generally play nicely with PDF\LaTeX.    Once you have a \textit{DVI} file there's (see the tools menu for whatever \LaTeX front end GUI you're using) a \textit{DVI} $\rightarrow$ \textit{PDF} converter.
-\section*{Budget}
-This project includes a budget proposal of around ---, which covers some specialty items including a digital camera, microspheres, and a fluid to increase the viscosity of the solution. 
-
-
-
-If you anticipate there will be costs associated with this project, give an approximate budget here.  Projects should not exceed \$500 unless there are extenuating circumstances (that have been okay'ed by the committee).
-
-Your mentor should help you with estimated costs for doing your project.
 
 \section*{Timeline}
-
-Capstone Prep and Capstone I papers {\bf MUST} have a Timeline section with an explicit
-plan for the project.  The following example is just a suggestion.
+This project will focus on creating a Brownian Motion laboratory expirement to be performed in a physics laboratory course. Ideally this will be completed by the end of Capstone I and Capstone II will be spent developed a technique for microrheology expirements. 
 
 \vspace{0.2in}
 {\bf Capstone I}
 \begin{itemize}\itemsep1pt \parskip0pt 
-\item Write preliminary code (2 weeks)
-\item Debug computer code (3 weeks)
-\item Take data with experiment (4 weeks)
-\item Write new computer program (4 weeks)
+\item Collect and Assemble Equipment (2 weeks)
+\item Expirementation (5 weeks)
+\item Perform Error Analysis and Tweaks (3 weeks)
+\item Finalize Procedure and Document (2 weeks)
 \item Analyze preliminary data, write paper, talk (2 weeks)
 \end{itemize}
 {\bf Capstone II} 
 \begin{itemize}\itemsep1pt \parskip0pt
-\item Begin migration to new structure for all computer code (3 weeks)
-\item Rebuild experiment to do what it was supposed to do all along (4 weeks)
-\item Rewrite new computer program (3 weeks)
-\item Analyze data (3 weeks)
+\item Additional Expirementation in Microrheology (3 weeks)
+\item Collect Data(4 weeks)
+\item Document Microrheology Procedure(3 weeks)
 \item Write paper, talk (2 weeks)
 \end{itemize}
 
